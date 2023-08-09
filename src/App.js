@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Ingresar from './componentes/Consultar';
+import Actualizar from './componentes/actualiza';
+import Eliminar from './componentes/eliminar';
+import Consultar from './componentes/Ingresa';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	const [dataUpdate, setDataUpdated] = useState(false);
 
+    const handleDataUpdate = () => {
+        setDataUpdated(true);
+    };
+    return (
+        <div className="App">
+            <header className="App-header">
+            </header>
+
+            <div>
+                <Consultar DataUpdate={dataUpdate}/>
+            </div>
+            <div>
+                <Ingresar onDataUpdate={handleDataUpdate} />
+            </div>
+            <div>
+                <Actualizar onDataUpdate={handleDataUpdate}/>
+            </div>
+            <div>
+                <Eliminar onDataUpdate={handleDataUpdate}/>
+            </div>
+        </div>	
+    );
+}
 export default App;
