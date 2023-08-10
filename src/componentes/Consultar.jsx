@@ -1,61 +1,47 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-function Consultar({ onDataUpdate }) {
-    const [Id_accesorio, setIdaccesorio] = useState('');
-    const [nombre, setnombre] = useState('');
-    const [precio, setprecio] = useState('');
-    const [tipo_de_accesorio, settipodeaccesrio] = useState('');
-    const [message, setMessage] = useState('');
+function Consultar({ dataUpdated }) {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, [dataUpdated]); // Agregar dataUpdated como dependencia
+
+    const fetchData = () => {
+        fetch('https://heraclean-stresses.000webhostapp.com/kamjac/api.php?apicall=readusuario')
+            .then(response => response.json())
+            .then(data => setData(data.contenido))
+            .catch(error => console.log(error));
+    };
+
+    return (
+        <div className="consultar-container">
+            <h2>Elementos de la tabla Mueble:</h2>
+            <ul>
+                {Array.isArray(data) ? (
+                    data.map(item => (
+                        <li key={item.Id_mueble}>
+                            <p>Id_mueble: {item.Id_mueble}</p>
+                            <p>nombre: {item.nombre}</p>
+                            <p>idcategoria: {item.idcategoria}</p>
+                            <p>medidas: {item.medidas}</p>
+                            <p>color: {item.color}</p>
+                            <p>precio: {item.precio}</p>
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
 
-        const accesorio = {
-            Id_accesorio,
-            nombre,
-            precio,
-            tipo_de_accesorio
-        };
 
-        fetch('http://localhost/prueba/api.php?apicall=readusuario', {
-            method: 'GET',
-            body: JSON.stringify(accesorio),
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    setMessage('Error al mostrar el accesorio');
-                } else {
-                    setMessage('Acción ejecutada correctamente');
-                    setIdaccesorio('');
-                    setnombre('');
-                    setprecio('');
-                    settipodeaccesrio('');
-                    onDataUpdate(); // Llama a la función de actualización de datos en el componente padre
-                }
-            })
-            .catch(error => {
-                setMessage('Error en la solicitud');
-                console.log(error);
-            });
-    };
+                        </li>
+                    ))
+                ) : (
+                    <p>No hay datos disponibles</p>
+                )}
+            </ul>
+        </div>
+    );
 
-    return (
-        <div className="Read-container">
-            <h2>Consultar material</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="Id_accesorio">Id_accesorio:</label>
-                    <label htmlFor="nombre">Nombre:</label>
-                    <label htmlFor="precio">Precio:</label>
-                    <label htmlFor="tipo_de_accesorio">tipo_de_accesorio:</label>
-                </div>
-                <button type="submit">Consultar</button>
-            </form>
-            {message && <p>{message}</p>}
-        </div>
-    );
+
+
 }
 
 export default Consultar;

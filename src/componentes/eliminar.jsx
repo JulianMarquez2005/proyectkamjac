@@ -1,30 +1,45 @@
 import React, { useState } from 'react';
 
 function Delete({ onDataUpdate }) {
-    const [Id_accesorio, setIdaccesorio] = useState('');
+    const [Id_mueble, setId_mueble] = useState('');
+    const [nombre, setnombre] = useState('');
+    const [idcategoria, setidcategoria] = useState('');
+    const [medidas, setmedidas] = useState('');
+    const [color, setcolor] = useState('');
+    const [precio, setprecio] = useState('');
     const [message, setMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const accesorio = {
-            Id_accesorio,
+        const mueble = {
+            Id_mueble,
+            nombre,
+            idcategoria,
+            medidas,
+            color,
+            precio,
         };
 
-        fetch('http://localhost/prueba/api.php?apicall=deleteusuario', {
+        fetch('https://heraclean-stresses.000webhostapp.com/kamjac/api.php?apicall=deleteusuario', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(accesorio),
+            body: JSON.stringify(mueble),
         })
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    setMessage('Error al eliminar el accesorio');
+                    setMessage('Error al eliminar el mueble');
                 } else {
-                    setMessage('Accesorio eliminado correctamente');
-                    setIdaccesorio('');
+                    setMessage('Mueble eliminado correctamente');
+                    setId_mueble('');
+                    setnombre('');
+                    setidcategoria('');
+                    setmedidas('');
+                    setcolor('');
+                    setprecio('');
                     onDataUpdate(); // Llama a la función de actualización de datos en el componente padre
                 }
             })
@@ -36,15 +51,15 @@ function Delete({ onDataUpdate }) {
 
     return (
         <div className="Delete-container">
-            <h2>Eliminar material</h2>
+            <h2>Eliminar mueble</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="Id_accesorio">Id_accesorio:</label>
+                    <label htmlFor="Id_mueble">Id_mueble:</label>
                     <input
                         type="text"
-                        id="Id_accesorio"
-                        value={Id_accesorio}
-                        onChange={e => setIdaccesorio(e.target.value)}
+                        id="Id_mueble"
+                        value={Id_mueble}
+                        onChange={e => setId_mueble(e.target.value)}
                         required
                     />
                 </div>
@@ -55,4 +70,4 @@ function Delete({ onDataUpdate }) {
     );
 }
 
-export default Delete;
+export default Delete;

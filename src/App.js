@@ -1,34 +1,47 @@
 import React, { useState } from 'react';
-import Ingresar from './componentes/Consultar';
-import Actualizar from './componentes/actualiza';
-import Eliminar from './componentes/eliminar';
-import Consultar from './componentes/Ingresa';
-
+import Consultar from './componentes/Consultar';
+import Ingresar from './componentes/Ingresar';
+import Actualizar from './componentes/Actualizar';
+import Eliminar from './componentes/Eliminar';
 
 function App() {
-	const [dataUpdate, setDataUpdated] = useState(false);
+    const [dataUpdated, setDataUpdated] = useState(false);
 
     const handleDataUpdate = () => {
         setDataUpdated(true);
     };
+
     return (
         <div className="App">
             <header className="App-header">
+                
+                <p>
+                    Editar el archivo <code>src/App.js</code> y guardar para recargar.
+                </p>
+                <a
+                    className="App-link"
+                    href="https://reactjs.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Learn React
+                </a>
             </header>
-
-            <div>
-                <Consultar DataUpdate={dataUpdate}/>
-            </div>
+            <h1>Ejemplo con React</h1>
             <div>
                 <Ingresar onDataUpdate={handleDataUpdate} />
             </div>
             <div>
-                <Actualizar onDataUpdate={handleDataUpdate}/>
+                <Consultar onDataUpdate={handleDataUpdate} />
             </div>
             <div>
-                <Eliminar onDataUpdate={handleDataUpdate}/>
+                <Actualizar onDataUpdate={handleDataUpdate} />
             </div>
-        </div>	
+            <div>
+                <Eliminar onDataUpdate={handleDataUpdate} />
+            </div>
+        </div>
     );
 }
+
 export default App;
