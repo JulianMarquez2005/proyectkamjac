@@ -44,7 +44,7 @@ function Actualizar({ onDataUpdate }) {
                 }
             })
             .catch(error => {
-                setMessage('Error en la solicitud');
+                setMessage('Error en la solicitudD');
                 console.log(error);
             });
     };
