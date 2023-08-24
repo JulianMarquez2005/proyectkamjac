@@ -21,7 +21,7 @@ function Ingresar({ onDataUpdate }) {
             precio,
         };
 
-        fetch('https://heraclean-stresses.000webhostapp.com/kamjac/api.php?apicall=createusuario', {
+        fetch('https://alejo1016.000webhostapp.com/api.php?apicall=CMueble', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

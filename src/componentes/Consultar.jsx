@@ -8,7 +8,7 @@ function Consultar({ dataUpdated }) {
     }, [dataUpdated]); // Agregar dataUpdated como dependencia
 
     const fetchData = () => {
-        fetch('https://heraclean-stresses.000webhostapp.com/kamjac/api.php?apicall=readusuario')
+        fetch('https://alejo1016.000webhostapp.com/api.php?apicall=RMueble')
             .then(response => response.json())
             .then(data => setData(data.contenido))
             .catch(error => console.log(error));

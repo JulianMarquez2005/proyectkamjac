@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import Consultar from './componentes/Consultar';
 import Ingresar from './componentes/Ingresar';
 import Actualizar from './componentes/Actualizar';
-import Eliminar from './componentes/Eliminar';
-
+import Delete from './componentes/Delete';
 function App() {
     const [dataUpdated, setDataUpdated] = useState(false);
 
@@ -38,7 +37,7 @@ function App() {
                 <Actualizar onDataUpdate={handleDataUpdate} />
             </div>
             <div>
-                <Eliminar onDataUpdate={handleDataUpdate} />
+                <Delete onDataUpdate={handleDataUpdate} />
             </div>
         </div>
     );
