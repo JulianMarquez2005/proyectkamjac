@@ -56,7 +56,7 @@ function Ingresar({ onDataUpdate }) {
                 <div>
                     <label htmlFor="Id_mueble">Id_mueble:</label>
                     <input
-                        type="text"
+                        type="number"
                         id="Id_mueble"
                         value={Id_mueble}
                         onChange={e => setId_mueble(e.target.value)}
@@ -76,7 +76,7 @@ function Ingresar({ onDataUpdate }) {
                 <div>
                     <label htmlFor="idcategoria">idcategoria:</label>
                     <input
-                        type="text"
+                        type="number"
                         id="idcategoria"
                         value={idcategoria}
                         onChange={e => setidcategoria(e.target.value)}
@@ -86,7 +86,7 @@ function Ingresar({ onDataUpdate }) {
                 <div>
                     <label htmlFor="medidas">medidas:</label>
                     <input
-                        type="text"
+                        type="number"
                         id="medidas"
                         value={medidas}
                         onChange={e => setmedidas(e.target.value)}
@@ -106,7 +106,7 @@ function Ingresar({ onDataUpdate }) {
                 <div>
                     <label htmlFor="precio">precio:</label>
                     <input
-                        type="text"
+                        type="number"
                         id="precio"
                         value={precio}
                         onChange={e => setprecio(e.target.value)}
